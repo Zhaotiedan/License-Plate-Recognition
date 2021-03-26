@@ -5,3 +5,11 @@
         
 2.fatal error C1083: 无法打开包括文件: “XXX.h”: No such file or directory
 解决参考博文：https://blog.csdn.net/qq_36881934/article/details/90479857
+
+
+//3.26
+1. git上传项目时项目过大，导致上传失败，报错error: RPC failed curl 92 HTTP/2 stream 0 was not closed cleanly: PROTOCOL_ERROR (err 1)
+解决：
+（1）先尝试：git config --global http.version HTTP/1.1 
+（2） 也可能是数据文件太大,传不过去：git config --global http.postBuffer 157286400
+拓展链接：https://stackoverflow.com/questions/59282476/error-rpc-failed-curl-92-http-2-stream-0-was-not-closed-cleanly-protocol-erro
