@@ -1,8 +1,6 @@
 ﻿D:\visual stodio 2017\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(377,5): warning MSB8004: Output 目录未以斜杠结尾。  此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Output 目录。
   test_pipeline.cpp
-f:\github\hyperlpr-master-master\hyperlpr-master-master\prj-win\lpr\tests\test_pipeline.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-f:\github\hyperlpr-master-master\hyperlpr-master-master\prj-win\lpr\tests\test_pipeline.cpp(48): warning C4129: “: 不可识别的字符转义序列
-f:\github\hyperlpr-master-master\hyperlpr-master-master\prj-win\lpr\tests\test_pipeline.cpp(53): error C3688: 文本后缀“娴嬭瘯鏂囦欢鍚”无效；未找到文文本运算符或文本运算符模板“operator """"娴嬭瘯鏂囦欢鍚”
-f:\github\hyperlpr-master-master\hyperlpr-master-master\prj-win\lpr\tests\test_pipeline.cpp(57): error C2001: 常量中有换行符
-f:\github\hyperlpr-master-master\hyperlpr-master-master\prj-win\lpr\tests\test_pipeline.cpp(59): error C2143: 语法错误: 缺少“;”(在“cv::Mat”的前面)
-f:\github\hyperlpr-master-master\hyperlpr-master-master\prj-win\lpr\tests\test_pipeline.cpp(62): error C2065: “prc”: 未声明的标识符
+f:\github\毕设\license-plate-recognition\license plate recognition\lpr\tests\test_pipeline.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+f:\github\毕设\license-plate-recognition\license plate recognition\lpr\tests\test_pipeline.cpp(21): warning C4129: “: 不可识别的字符转义序列
+f:\github\毕设\license-plate-recognition\license plate recognition\lpr\tests\test_pipeline.cpp(25): error C2001: 常量中有换行符
+f:\github\毕设\license-plate-recognition\license plate recognition\lpr\tests\test_pipeline.cpp(26): error C2143: 语法错误: 缺少“;”(在“cv::Mat”的前面)
