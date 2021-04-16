@@ -18,11 +18,11 @@ void TEST_PIPELINE(){
 	string ImgName;
 	string ImgName1;
 	//测试集文件下的txt文件路径
-	ifstream fin("F:\\github\\毕设\\License-Plate-Recognition\\License Plate Recognition\\检测车牌照片\\车牌文件名.txt");
+	ifstream fin("F:\\github\\bishe\\License-Plate-Recognition\\License Plate Recognition\\picture\\card- name.txt");
 	while (getline(fin, ImgName))
 	{
 		cout << "Handle" << ImgName << endl;
-		ImgName1 = "F:\\github\\毕设\\License-Plate-Recognition\\License Plate Recognition\\检测车牌照片" + ImgName;
+		ImgName1 = "F:\\github\\bishe\\License-Plate-Recognition\\License Plate Recognition\\picture" + ImgName;
 		cv::Mat image = cv::imread(ImgName1);
 
 		//cv::Mat image = cv::imread("../7.jpg");//选择测试图片
