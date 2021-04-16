@@ -13,3 +13,9 @@
 （1）先尝试：git config --global http.version HTTP/1.1 
 （2） 也可能是数据文件太大,传不过去：git config --global http.postBuffer 157286400
 拓展链接：https://stackoverflow.com/questions/59282476/error-rpc-failed-curl-92-http-2-stream-0-was-not-closed-cleanly-protocol-erro
+
+//4.16
+1. 尝试改进：循环读入一批车牌信息进行识别，but关于路径 "F:\\github\\bishe\\License-Plate-Recognition\\License Plate Recognition\\picture" 报错：C2001 常量中有换行符
+解决：编码格式原因
+https://blog.csdn.net/m0_37362454/article/details/88532340
+
