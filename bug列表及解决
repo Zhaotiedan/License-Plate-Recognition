@@ -1,7 +1,7 @@
 //3.25
 1.vs报错：fatal error LNK1112: 模块计算机类型“X86”与目标计算机类型“x64”冲突
 解决：（1）右键项目名，点击属性，弹出项目属性页，找到链接器----高级，修改右侧的目标计算机，选择有X64的那个选项。
-        （2）右键项目名，选择清理解决方案，清理完之后选择X64平台编译器，然后重新生成解决方案，便可以调试成功。
+      （2）右键项目名，选择清理解决方案，清理完之后选择X64平台编译器，然后重新生成解决方案，便可以调试成功。
         
 2.fatal error C1083: 无法打开包括文件: “XXX.h”: No such file or directory
 解决参考博文：https://blog.csdn.net/qq_36881934/article/details/90479857
@@ -15,7 +15,15 @@
 拓展链接：https://stackoverflow.com/questions/59282476/error-rpc-failed-curl-92-http-2-stream-0-was-not-closed-cleanly-protocol-erro
 
 //4.16
-1. 尝试改进：循环读入一批车牌信息进行识别，but关于路径 "F:\\github\\bishe\\License-Plate-Recognition\\License Plate Recognition\\picture" 报错：C2001 常量中有换行符
-解决：编码格式原因
-https://blog.csdn.net/m0_37362454/article/details/88532340
+1. 尝试改进：循环读入一批车牌信息进行识别，but关于路径 "F:\\github\\毕设\\License-Plate-Recognition\\License Plate Recognition\\picture" 报错：C2001 常量中有换行符
+原因：编码格式原因
+参考博文：https://blog.csdn.net/m0_37362454/article/details/88532340
+解决：直接把文件路径中含有的中文进行更改，把文件夹名字全改成中文
+
+//4.17
+1. git add . 出现错误：fatal: Unable to create 'F:/github/bishe/License-Plate-Recognition/.git/index.lock': File
+原因：前一段git add .的进程未停止，index.lock文件不能重复创建
+参考博文：https://blog.csdn.net/MarkusZhang/article/details/109512057
+         https://zhengsl.blog.csdn.net/article/details/44943985
+解决：rm -rf F:/github/bishe/License-Plate-Recognition/.git/index.lock
 
