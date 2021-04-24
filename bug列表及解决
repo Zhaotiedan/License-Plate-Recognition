@@ -27,3 +27,19 @@
          https://zhengsl.blog.csdn.net/article/details/44943985
 解决：rm -rf F:/github/bishe/License-Plate-Recognition/.git/index.lock
 
+
+//4.25
+ 向mysql数据库中插入数据，参考博文：https://www.cnblogs.com/fnlingnzb-learner/p/5829556.html
+ 
+（1）报错：error C4996: 'sprintf': This function or variable may be unsafe.
+  解决方法：将sprintf改成sprintf_s
+  参考博文：https://www.cnblogs.com/douzi2/p/3974959.html
+  
+（2）报错：sprintf构造的动态数据库插入语句的插入字符串必须为char*，且原数据类型为cv::String
+  解决方法：cv::String转换为std::string再转换为char*
+  参考博文：https://blog.csdn.net/sy95122/article/details/81671427
+           https://blog.csdn.net/u010442934/article/details/77169604
+           
+（3）报错：“error c4430缺少类型说明符-假定为int。注意C++不支持默认int
+  解决方法：头文件问题，具体问题具体分析
+  参考博文：https://blog.csdn.net/misayaaaaa/article/details/79150725
