@@ -41,19 +41,7 @@ void TEST_PIPELINE(){
 
 			//使用端到端模型模型进行识别，识别结果将会保存在res里面
 			vector<pr::PlateInfo> res = prc.RunPiplineAsImage(image);
-			
-			/*
-			float conf = 0;//初始最大置信度
-			for (auto st : res)
-			{
-				//判断最大置信度下的识别结果		
-				if (st.confidence > 0.1)
-				{
-					cout << st.getPlateName() << " " << st.confidence << endl;
-					conf += st.confidence;
-				}
-			}
-			*/
+
 			float maxconf = 0.5; //初始最大置信度
 			string finaln;
 			for (auto st : res) 
@@ -70,7 +58,6 @@ void TEST_PIPELINE(){
 			cout << maxconf << endl;
 		}
 	}
-	system("pause");
 
 }
 
@@ -79,9 +66,8 @@ int main()
 {
 
    TEST_PIPELINE();
-
+   system("pause");
 
     return 0 ;
-
-
 }
+

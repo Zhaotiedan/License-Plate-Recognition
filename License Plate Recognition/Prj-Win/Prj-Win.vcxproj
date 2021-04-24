@@ -76,8 +76,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>E:\Program Files\opencv\opencv\build\include\opencv;E:\Program Files\opencv\opencv\build\include\opencv2;E:\Program Files\opencv\opencv\build\include;F:\github\HyperLPR-master-master\HyperLPR-master-master\Prj-Win\lpr\src;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\Program Files\opencv\opencv\build\x64\vc14\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\Program Files\opencv\opencv\build\include\opencv;E:\Program Files\opencv\opencv\build\include\opencv2;E:\Program Files\opencv\opencv\build\include;F:\github\HyperLPR-master-master\HyperLPR-master-master\Prj-Win\lpr\src;D:\visual stodio 2017\VC\Tools\MSVC\14.16.27023\include;D:\visual stodio 2017\VC\Tools\MSVC\14.16.27023\atlmfc\include;D:\visual stodio 2017\VC\Auxiliary\VS\include;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\Program Files\opencv\opencv\build\x64\vc14\lib;D:\visual stodio 2017\VC\Tools\MSVC\14.16.27023\lib\x64;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Build</OutDir>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
@@ -109,12 +109,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>F:\github\HyperLPR-master-master\HyperLPR-master-master\Prj-Win\lpr\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\github\HyperLPR-master-master\HyperLPR-master-master\Prj-Win\lpr\include;E:\Program Files\MySQL\mysql-8.0.24-winx64\mysql-8.0.24-winx64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opencv_world341d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);opencv_world341d.lib;libmysql.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\Program Files\MySQL\mysql-8.0.24-winx64\mysql-8.0.24-winx64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -173,6 +174,7 @@
     <ClCompile Include="..\lpr\src\PlateSegmentation.cpp" />
     <ClCompile Include="..\lpr\src\Recognizer.cpp" />
     <ClCompile Include="..\lpr\tests\test_pipeline.cpp" />
+    <ClCompile Include="SQLRead.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

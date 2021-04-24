@@ -3,113 +3,117 @@
 #ifndef SWIFTPR_PLATEINFO_H
 #define SWIFTPR_PLATEINFO_H
 #include <opencv2/opencv.hpp>
+using namespace std;
 namespace pr {
 
-    typedef std::vector<cv::Mat> Character;
+    typedef vector<cv::Mat> Character;
 
     enum PlateColor { BLUE, YELLOW, WHITE, GREEN, BLACK,UNKNOWN};
     enum CharType {CHINESE,LETTER,LETTER_NUMS};
 
 
     class PlateInfo {
-        public:
-        std::vector<std::pair<CharType,cv::Mat>> plateChars;
-            std::vector<std::pair<CharType,cv::Mat>> plateCoding;
+    public:
+    vector<pair<CharType,cv::Mat>> plateChars;
+    vector<pair<CharType,cv::Mat>> plateCoding;
+	
+    float confidence = 0;
+	
+	
+    PlateInfo(const cv::Mat &plateData, std::string plateName, cv::Rect plateRect, PlateColor plateType) 
+	{
+        licensePlate = plateData;
+        name = plateName;
+        ROI = plateRect;
+        Type = plateType;
+    }
+    PlateInfo(const cv::Mat &plateData, cv::Rect plateRect, PlateColor plateType) 
+	{
+        licensePlate = plateData;
+        ROI = plateRect;
+        Type = plateType;
+    }
+    PlateInfo(const cv::Mat &plateData, cv::Rect plateRect) 
+	{
+        licensePlate = plateData;
+        ROI = plateRect;
+    }
 
-            float confidence = 0;
+    PlateInfo() {
+
+    }
+
+    cv::Mat getPlateImage() 
+	{
+        return licensePlate;
+    }
+
+    void setPlateImage(cv::Mat plateImage){
+        licensePlate = plateImage;
+    }
+
+    cv::Rect getPlateRect() {
+        return ROI;
+    }
+
+    void setPlateRect(cv::Rect plateRect)   {
+        ROI = plateRect;
+    }
+    cv::String getPlateName() {
+        return name;
+
+    }
+    void setPlateName(cv::String plateName) {
+        name = plateName;
+    }
+    int getPlateType() {
+        return Type;
+    }
+
+    void appendPlateChar(const pair<CharType,cv::Mat> &plateChar)
+    {
+        plateChars.push_back(plateChar);
+    }
+
+    void appendPlateCoding(const pair<CharType,cv::Mat> &charProb){
+        plateCoding.push_back(charProb);
+    }
+
+ 
+    string decodePlateNormal(vector<string> mappingTable) 
+	{
+        string decode;
+        for(auto plate:plateCoding) {
+            float *prob = (float *)plate.second.data;
+            if(plate.first == CHINESE) {
+
+                decode += mappingTable[std::max_element(prob,prob+31) - prob];
+                confidence+=*std::max_element(prob,prob+31);
 
 
-            PlateInfo(const cv::Mat &plateData, std::string plateName, cv::Rect plateRect, PlateColor plateType) {
-                    licensePlate = plateData;
-                    name = plateName;
-                    ROI = plateRect;
-                    Type = plateType;
-                }
-            PlateInfo(const cv::Mat &plateData, cv::Rect plateRect, PlateColor plateType) {
-                licensePlate = plateData;
-                ROI = plateRect;
-                Type = plateType;
+//                std::cout<<*std::max_element(prob,prob+31)<<std::endl;
+
             }
-            PlateInfo(const cv::Mat &plateData, cv::Rect plateRect) {
-                licensePlate = plateData;
-                ROI = plateRect;
-            }
-            PlateInfo() {
 
+            if(plate.first == LETTER) {
+                decode += mappingTable[std::max_element(prob+41,prob+65)- prob];
+                confidence+=*std::max_element(prob+41,prob+65);
             }
 
-            cv::Mat getPlateImage() {
-                return licensePlate;
-            }
-
-            void setPlateImage(cv::Mat plateImage){
-                licensePlate = plateImage;
-            }
-
-            cv::Rect getPlateRect() {
-                return ROI;
-            }
-
-            void setPlateRect(cv::Rect plateRect)   {
-                ROI = plateRect;
-            }
-            cv::String getPlateName() {
-                return name;
+            if(plate.first == LETTER_NUMS) {
+                decode += mappingTable[std::max_element(prob+31,prob+65)- prob];
+                confidence+=*std::max_element(prob+31,prob+65);
+//                std::cout<<*std::max_element(prob+31,prob+65)<<std::endl;
 
             }
-            void setPlateName(cv::String plateName) {
-                name = plateName;
-            }
-            int getPlateType() {
-                return Type;
-            }
 
-            void appendPlateChar(const std::pair<CharType,cv::Mat> &plateChar)
-            {
-                plateChars.push_back(plateChar);
-            }
+        }
+        name = decode;
 
-            void appendPlateCoding(const std::pair<CharType,cv::Mat> &charProb){
-                plateCoding.push_back(charProb);
-            }
+        confidence/=7;
 
-    //        cv::Mat getPlateChars(int id) {
-    //            if(id<PlateChars.size())
-    //                return PlateChars[id];
-    //        }
-            std::string decodePlateNormal(std::vector<std::string> mappingTable) {
-                std::string decode;
-                for(auto plate:plateCoding) {
-                    float *prob = (float *)plate.second.data;
-                    if(plate.first == CHINESE) {
-
-                        decode += mappingTable[std::max_element(prob,prob+31) - prob];
-                        confidence+=*std::max_element(prob,prob+31);
-
-
-//                        std::cout<<*std::max_element(prob,prob+31)<<std::endl;
-
-                    }
-
-                    if(plate.first == LETTER) {
-                        decode += mappingTable[std::max_element(prob+41,prob+65)- prob];
-                        confidence+=*std::max_element(prob+41,prob+65);
-                    }
-
-                    if(plate.first == LETTER_NUMS) {
-                        decode += mappingTable[std::max_element(prob+31,prob+65)- prob];
-                        confidence+=*std::max_element(prob+31,prob+65);
-//                        std::cout<<*std::max_element(prob+31,prob+65)<<std::endl;
-
-                    }
-
-                }
-                name = decode;
-
-                confidence/=7;
-
-                return decode;
-            }
+        return decode;
+    }
 
 
 

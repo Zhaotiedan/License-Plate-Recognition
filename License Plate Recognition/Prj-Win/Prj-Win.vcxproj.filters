@@ -16,6 +16,9 @@
     <Filter Include="源文件\test">
       <UniqueIdentifier>{40ff6658-4f52-40c1-8658-4ae399661603}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\database">
+      <UniqueIdentifier>{206fc2d3-a722-465b-a756-7933c7dc1cf4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lpr\include\CNNRecognizer.h">
@@ -70,6 +73,9 @@
     </ClCompile>
     <ClCompile Include="..\lpr\tests\test_pipeline.cpp">
       <Filter>源文件\test</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLRead.cpp">
+      <Filter>源文件\database</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
