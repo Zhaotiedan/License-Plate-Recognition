@@ -43,3 +43,9 @@
 （3）报错：“error c4430缺少类型说明符-假定为int。注意C++不支持默认int
   解决方法：头文件问题，具体问题具体分析
   参考博文：https://blog.csdn.net/misayaaaaa/article/details/79150725
+  
+  //5.11
+  引入第三方库jsoncpp时出现的一些错误
+  （1）报错：Use StreamWriterBuilder instead
+  解决：新旧版API的不兼容问题
+参考博文： https://blog.csdn.net/chen_soldier/article/details/100580569；https://blog.csdn.net/shaosunrise/article/details/84680602
