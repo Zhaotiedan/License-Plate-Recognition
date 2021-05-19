@@ -49,3 +49,8 @@
   （1）报错：Use StreamWriterBuilder instead
   解决：新旧版API的不兼容问题
 参考博文： https://blog.csdn.net/chen_soldier/article/details/100580569；https://blog.csdn.net/shaosunrise/article/details/84680602
+
+//5.15 
+继5.11的错误：引入第三方库jsoncpp时报错Use StreamWriterBuilder instead
+使用了提供博客链接进行处理后，在程序运行时老是出现崩溃，有c++异常：std::length_error；断言崩溃等，但是长度并不存在越界。
+最后的解决：在jsoncpp开源库里提交过的issue里，获取了解决方案，详见jsoncpp的github地址，inssue（#815）
